@@ -1,7 +1,7 @@
 {
   "name": "b2c-custom-policy-executor",
   "version": "1.0.0",
-  "description": "Runs arbitrary code as part of an Azure B2C custom flow",
+  "description": "Calls to REST API to validate input as part of an Azure B2C custom registration flow",
   "main": "index.js",
   "author": "Tom Barwick <tom_barwick@hotmail.com>",
   "license": "MIT",

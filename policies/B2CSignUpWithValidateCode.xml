@@ -246,26 +246,6 @@
   Providers Here-->
   <ClaimsProviders>
     <ClaimsProvider>
-      <DisplayName>Token Issuer</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="JwtIssuer">
-          <DisplayName>JWT Issuer</DisplayName>
-          <Protocol Name="None" />
-          <OutputTokenFormat>JWT</OutputTokenFormat>
-          <Metadata>
-            <Item Key="client_id">{service:te}</Item>
-            <Item Key="issuer_refresh_token_user_identity_claim_type">objectId</Item>
-            <Item Key="SendTokenResponseBodyWithJsonNumbers">true</Item>
-          </Metadata>
-          <CryptographicKeys>
-            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
-            <Key Id="issuer_refresh_token_key"
-              StorageReferenceId="B2C_1A_TokenEncryptionKeyContainer" />
-          </CryptographicKeys>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
-    <ClaimsProvider>
       <DisplayName>Trustframework Policy Engine TechnicalProfiles</DisplayName>
       <TechnicalProfiles>
         <TechnicalProfile Id="TpEngine_c3bd4fe2-1775-4013-b91d-35f16d377d13">
@@ -274,26 +254,6 @@
           <Metadata>
             <Item Key="url">{service:te}</Item>
           </Metadata>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
-    <ClaimsProvider>
-      <DisplayName>Claim Generator Technical Profiles</DisplayName>
-      <TechnicalProfiles>
-        <TechnicalProfile Id="ClaimGenerator">
-          <DisplayName>Generate Object ID, displayName and message Claims Technical Profile.</DisplayName>
-          <Protocol Name="Proprietary"
-            Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-          <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="objectId" />
-            <OutputClaim ClaimTypeReferenceId="displayName" />
-            <OutputClaim ClaimTypeReferenceId="message" />
-          </OutputClaims>
-          <OutputClaimsTransformations>
-            <OutputClaimsTransformation ReferenceId="GenerateRandomObjectIdTransformation" />
-            <OutputClaimsTransformation ReferenceId="CreateDisplayNameTransformation" />
-            <OutputClaimsTransformation ReferenceId="CreateMessageTransformation" />
-          </OutputClaimsTransformations>
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
@@ -388,6 +348,46 @@
           <InputClaims>
             <InputClaim ClaimTypeReferenceId="accessCode" PartnerClaimType="accessCode" />
           </InputClaims>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Claim Generator Technical Profiles</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="ClaimGenerator">
+          <DisplayName>Generate Object ID, displayName and message Claims Technical Profile.</DisplayName>
+          <Protocol Name="Proprietary"
+            Handler="Web.TPEngine.Providers.ClaimsTransformationProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="objectId" />
+            <OutputClaim ClaimTypeReferenceId="displayName" />
+            <OutputClaim ClaimTypeReferenceId="message" />
+          </OutputClaims>
+          <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="GenerateRandomObjectIdTransformation" />
+            <OutputClaimsTransformation ReferenceId="CreateDisplayNameTransformation" />
+            <OutputClaimsTransformation ReferenceId="CreateMessageTransformation" />
+          </OutputClaimsTransformations>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    <ClaimsProvider>
+      <DisplayName>Token Issuer</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="JwtIssuer">
+          <DisplayName>JWT Issuer</DisplayName>
+          <Protocol Name="None" />
+          <OutputTokenFormat>JWT</OutputTokenFormat>
+          <Metadata>
+            <Item Key="client_id">{service:te}</Item>
+            <Item Key="issuer_refresh_token_user_identity_claim_type">objectId</Item>
+            <Item Key="SendTokenResponseBodyWithJsonNumbers">true</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+            <Key Id="issuer_refresh_token_key"
+              StorageReferenceId="B2C_1A_TokenEncryptionKeyContainer" />
+          </CryptographicKeys>
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
