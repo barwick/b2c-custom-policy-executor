@@ -35,6 +35,6 @@ app.post("/validate-accesscode", (req, res) => {
   }
 });
 
-app.listen(80, () => {
-  console.log(`Access code service listening on port !` + 80);
+app.listen(8080, () => {
+  console.log(`Access code service listening on port !` + 8080);
 });
